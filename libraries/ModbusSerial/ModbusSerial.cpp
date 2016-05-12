@@ -101,9 +101,9 @@ bool ModbusSerial::receive(byte* frame) {
 	}
 
 	//CRC Check
-	// if (crc != this->calcCrc(_frame[0], _frame+1, _len-3)) {
-	//		return false;
-	//  }
+	if (crc != this->calcCrc(_frame[0], _frame+1, _len-3)) {
+		return false;
+	}
 
 	//PDU starts after first byte
 	//framesize PDU = framesize - address(1) - crc(2)
