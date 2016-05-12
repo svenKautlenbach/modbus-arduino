@@ -173,7 +173,8 @@ void ModbusSerial::task() {
 
     byte i;
     _frame = (byte*) malloc(_len);
-    for (i=0 ; i < _len ; i++) _frame[i] = (*_port).read();
+    for (i=0 ; i < _len ; i++)
+	_frame[i] = (*_port).read();
 
     if (this->receive(_frame)) {
         if (_reply == MB_REPLY_NORMAL)
